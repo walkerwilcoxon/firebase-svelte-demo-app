@@ -1,4 +1,4 @@
-import { getApp, getApps, initializeApp } from 'firebase/app'
+import { initializeApp } from 'firebase/app'
 import {
     httpsCallable,
     getFunctions,
@@ -12,7 +12,7 @@ let functions: Functions
 export let firestore: Firestore
 export let auth: Auth
 
-export let app = initializeApp({
+let app = initializeApp({
     apiKey: "AIzaSyCG_25MA5piQTbTl_Rsvx4ZLtDJnCNd_Yo",
     authDomain: "fir-svelte-demo-app.firebaseapp.com",
     projectId: "fir-svelte-demo-app",
