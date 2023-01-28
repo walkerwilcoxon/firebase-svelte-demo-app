@@ -1,30 +1,25 @@
-import { browser, dev } from '$app/environment'
 import { getApp, getApps, initializeApp } from 'firebase/app'
 import {
     httpsCallable,
     getFunctions,
-    connectFunctionsEmulator,
     type Functions,
 } from 'firebase/functions'
-import { getFirestore, connectFirestoreEmulator, Firestore, CollectionReference, collection } from 'firebase/firestore'
-import { getAuth, connectAuthEmulator, type Auth } from 'firebase/auth'
-import { derived, writable } from 'svelte/store'
+import { getFirestore, Firestore, CollectionReference, collection } from 'firebase/firestore'
+import { getAuth, type Auth } from 'firebase/auth'
+import { writable } from 'svelte/store'
 
 let functions: Functions
 export let firestore: Firestore
 export let auth: Auth
 
-export let app =
-    getApps().length === 0
-        ? initializeApp({
-            apiKey: "AIzaSyCG_25MA5piQTbTl_Rsvx4ZLtDJnCNd_Yo",
-            authDomain: "fir-svelte-demo-app.firebaseapp.com",
-            projectId: "fir-svelte-demo-app",
-            storageBucket: "fir-svelte-demo-app.appspot.com",
-            messagingSenderId: "562872230075",
-            appId: "1:562872230075:web:6c140c72cb7bddfcc6499e"
-        })
-        : getApp()
+export let app = initializeApp({
+    apiKey: "AIzaSyCG_25MA5piQTbTl_Rsvx4ZLtDJnCNd_Yo",
+    authDomain: "fir-svelte-demo-app.firebaseapp.com",
+    projectId: "fir-svelte-demo-app",
+    storageBucket: "fir-svelte-demo-app.appspot.com",
+    messagingSenderId: "562872230075",
+    appId: "1:562872230075:web:6c140c72cb7bddfcc6499e"
+})
 
 firestore = getFirestore()
 auth = getAuth()
